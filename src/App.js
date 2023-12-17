@@ -6,24 +6,27 @@ import ProductDETAILS from "./component/ProductDETAILS";
 import About from "./component/About";
 import Slider from "./component/slider";
 import { Routes, Route } from "react-router";
+import { EcomerceProvider } from "./context/EcomerceContext.js";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Slider />
-              <ProductsList />
-            </>
-          }
-        />
-        <Route path="about" element={<About />} />
-        <Route path="products/:productid" element={<ProductDETAILS />} />
-      </Routes>
+      <EcomerceProvider>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Slider />
+                <ProductsList />
+              </>
+            }
+          />
+          <Route path="about" element={<About />} />
+          <Route path="products/:productid" element={<ProductDETAILS />} />
+        </Routes>
+      </EcomerceProvider>
     </div>
   );
 }
