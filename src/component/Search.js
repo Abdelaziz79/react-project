@@ -1,7 +1,7 @@
 import { useEcomerce } from "../context/EcomerceContext";
 
 function Search() {
-  const { search, setSearch } = useEcomerce();
+  const { search, dispatch } = useEcomerce();
 
   return (
     <input
@@ -9,7 +9,9 @@ function Search() {
       value={search}
       className="form-control"
       placeholder="Search for products"
-      onChange={(e) => setSearch(e.target.value)}
+      onChange={(e) => {
+        dispatch({ type: "setSearch", payload: e.target.value });
+      }}
     />
   );
 }
